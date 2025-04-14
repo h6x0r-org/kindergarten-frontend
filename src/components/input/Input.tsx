@@ -13,8 +13,8 @@ export const Input = <T extends FieldValues>({name, control, ...props}: IInput<T
 
 	return (
 		<TextField
-			{...props}
 			{...fieldProps}
+			{...props}
 			error={invalid}
 			value={value ?? ''}
 			helperText={error?.message}

@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom'
+import Box from '@mui/material/Box'
 
 import { Header } from './components/header'
 import { Container } from './styles'
@@ -8,13 +9,14 @@ const Layout = () => (
 	<Container>
 		<Header />
 		<Suspense>
-			<div style={{ margin: 'auto' }}>
+			<Box margin='auto'>
 				<Outlet />
-			</div>
+			</Box>
 		</Suspense>
-		<div style={{ position: 'absolute', bottom: 0 }}>
+		{/* TODO: Change later */}
+		<Box position='absolute' bottom='0'>
 			Footer
-		</div>
+		</Box>
 	</Container>
 )
 

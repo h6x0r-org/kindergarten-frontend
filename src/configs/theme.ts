@@ -8,5 +8,16 @@ export const theme = createTheme({
 			main: baseTheme.palette.common.black
 		}
 	},
-	components: {}
+	components: {
+		MuiButton: {
+			defaultProps: {
+				variant: 'contained'
+			},
+			styleOverrides: {
+				root: {
+					textTransform: 'capitalize'
+				}
+			}
+		},
+	}
 })
