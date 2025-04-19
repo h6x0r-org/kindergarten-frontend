@@ -7,15 +7,6 @@
 
 a {
     text-decoration: none;
-    color: #525252;
-    font-weight: 500;
-    padding: 0;
-    line-height: 24px;
-
-    &:hover,
-    &:focus {
-        color: #171717;
-    }
 }
 
 #root {

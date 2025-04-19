@@ -1,25 +1,29 @@
 import Tooltip from '@mui/material/Tooltip'
+import { useLocation } from 'react-router-dom'
 
 import { SIDEBAR_LINKS } from './constants'
-import { SidebarContainer, IconWrapper } from './styles'
-import { useSidebar } from './useSidebar'
+import { SidebarContainer, StyledNavLink, StyledIconButton } from './styles'
+import { ROUTER } from '../../../../constants/router'
 
 export const Sidebar = () => {
-	const {handleNavigate, isActive} = useSidebar()
+	const location = useLocation()
+	const section = location.pathname.split('/')[1] || ROUTER.MAIN
 
 	return (
 		<SidebarContainer>
-			{SIDEBAR_LINKS.map(({Icon, title, path}) => (
-				<Tooltip key={path} title={title} placement="right">
-					<IconWrapper
-						aria-label={title}
-						active={isActive(path)}
-						onClick={() => handleNavigate(path)}
-					>
-						<Icon />
-					</IconWrapper>
-				</Tooltip>
-			))}
+			{SIDEBAR_LINKS.map(({Icon, title, path}) => {
+				const fullPath = `/${section}/${path}`
+
+				return (
+					<Tooltip key={path} title={title} placement="right">
+						<StyledNavLink to={fullPath}>
+							<StyledIconButton aria-label={title}>
+								<Icon />
+							</StyledIconButton>
+						</StyledNavLink>
+					</Tooltip>
+				)
+			})}
 		</SidebarContainer>
 	)
 }

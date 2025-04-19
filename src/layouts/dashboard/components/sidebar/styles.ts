@@ -1,10 +1,7 @@
 import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
+import { NavLink } from 'react-router-dom'
 import IconButton from '@mui/material/IconButton'
-
-interface IIconWrapper {
-	active: boolean
-}
 
 export const SidebarContainer = styled(Box)`
     width: 60px;
@@ -17,18 +14,26 @@ export const SidebarContainer = styled(Box)`
     height: 100%;
 `
 
-export const IconWrapper = styled(IconButton, {
-	shouldForwardProp: (prop) => prop !== 'active'
-})<IIconWrapper>`
-    margin: 8px 0;
-    color: ${({active, theme}) => (active ? theme.palette.common.black : theme.palette.grey[500])};
-    transition: ${({theme}) =>
-            theme.transitions.create('color', {
-                duration: theme.transitions.duration.short,
-                easing: theme.transitions.easing.easeInOut
-            })};
+export const StyledNavLink = styled(NavLink)(({theme}) => ({
+	textDecoration: 'none',
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+	margin: '8px 0',
 
-    &:hover {
-        color: ${({theme}) => theme.palette.common.black};
-    }
-`
+	'&.active .MuiIconButton-root': {
+		color: theme.palette.common.black
+	}
+}))
+
+export const StyledIconButton = styled(IconButton)(({theme}) => ({
+	color: theme.palette.text.secondary,
+	transition: theme.transitions.create('color', {
+		duration: theme.transitions.duration.short,
+		easing: theme.transitions.easing.easeInOut
+	}),
+
+	'&:hover': {
+		color: theme.palette.common.black
+	}
+}))

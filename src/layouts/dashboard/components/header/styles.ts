@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles'
 import IconButton from '@mui/material/IconButton'
+import { NavLink } from 'react-router-dom'
 
 interface IMobileMenu {
 	open: boolean;
@@ -26,6 +27,18 @@ export const Wrapper = styled('div')(({theme}) => ({
 
 	[theme.breakpoints.down('md')]: {
 		display: 'none'
+	}
+}))
+
+export const StyledLink = styled(NavLink)(({theme}) => ({
+	color: theme.palette.text.secondary,
+
+	'&:hover': {
+		color: theme.palette.common.black
+	},
+
+	'&.active': {
+		color: theme.palette.common.black
 	}
 }))
 

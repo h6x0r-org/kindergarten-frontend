@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import IconMenu from '@mui/icons-material/Menu'
 import IconClose from '@mui/icons-material/Close'
 import Button from '@mui/material/Button'
@@ -17,7 +16,8 @@ import {
 	MobileHeader,
 	NavbarContent,
 	Wrapper,
-	ModalWrapper
+	ModalWrapper,
+	StyledLink
 } from './styles'
 
 export const Header = () => {
@@ -42,9 +42,9 @@ export const Header = () => {
 				<Wrapper>
 					<NavbarContent>
 						{HEADER_LINKS.map((link) => (
-							<Link to={link.to} key={link.title}>
+							<StyledLink to={link.to} key={link.title}>
 								{link.title}
-							</Link>
+							</StyledLink>
 						))}
 					</NavbarContent>
 					{user ? (
@@ -77,13 +77,9 @@ export const Header = () => {
 					</MobileHeader>
 					<MobileNavbarContent>
 						{HEADER_LINKS.map((link) => (
-							<Link
-								to={link.to}
-								key={link.title}
-								onClick={toggleMobileMenu}
-							>
+							<StyledLink to={link.to} key={link.title} onClick={toggleMobileMenu}>
 								{link.title}
-							</Link>
+							</StyledLink>
 						))}
 					</MobileNavbarContent>
 				</Box>
