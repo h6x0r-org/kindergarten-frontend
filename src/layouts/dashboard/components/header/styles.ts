@@ -9,9 +9,12 @@ export const Container = styled('header')`
     height: 68px;
     display: flex;
     align-items: center;
-    gap: 96px;
+    gap: 40px;
     width: 100%;
     justify-content: space-between;
+    background-color: ${({theme}) => theme.palette.background.paper};
+    border-bottom: 1px solid ${({theme}) => theme.palette.divider};
+    padding: 0 16px;
 `
 
 export const Wrapper = styled('div')(({theme}) => ({
@@ -47,20 +50,25 @@ export const MobileMenuButton = styled(IconButton)(({theme}) => ({
 	}
 }))
 
-export const MobileMenu = styled('nav')<IMobileMenu>(({open}) => `
+export const MobileMenu = styled('nav')<IMobileMenu>(({open, theme}) => `
   height: 100%;
   width: 300px;
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 0;
+  right: 0;
   background-color: #fff;
   padding: 0 16px 16px;
-  transform: translateX(${open ? '0' : '-100%'});
-  transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 1;
+  transform: translateX(${open ? '0' : '100%'});
+  border-left: 1px solid ${theme.palette.divider};
+  transition: ${theme.transitions.create('transform', {
+	duration: theme.transitions.duration.standard,
+	easing: theme.transitions.easing.easeInOut
+})};
 `)
 
 export const MobileHeader = styled('div')`

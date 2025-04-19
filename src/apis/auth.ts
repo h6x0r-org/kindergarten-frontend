@@ -7,4 +7,4 @@ export const login = async <T>(data: T): Promise<IUser & { token: string }> => {
 	return {...user, token}
 }
 
-export const logout = async () => await request.post('auth/logout')
+export const logout = async () => await request.post('auth/logout', {})
