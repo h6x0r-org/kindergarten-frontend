@@ -102,5 +102,6 @@ export const ModalWrapper = styled('div')(({theme}) => ({
 	padding: theme.spacing(4),
 	display: 'flex',
 	flexDirection: 'column',
-	gap: theme.spacing(4)
+	gap: theme.spacing(4),
+	borderRadius: theme.shape.borderRadius
 }))
