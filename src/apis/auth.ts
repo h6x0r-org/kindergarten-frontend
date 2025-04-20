@@ -1,4 +1,4 @@
-import { request } from '../configs/requests'
+import { request } from '../configs/request'
 import { IUser } from '../types/user'
 
 export const login = async <T>(data: T): Promise<IUser & { token: string }> => {

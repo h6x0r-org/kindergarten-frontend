@@ -1,13 +1,11 @@
 import Tooltip from '@mui/material/Tooltip'
-import { useLocation } from 'react-router-dom'
 
 import { SIDEBAR_LINKS } from './constants'
 import { SidebarContainer, StyledNavLink, StyledIconButton } from './styles'
-import { ROUTER } from '../../../../constants/router'
+import { useSectionFromPath } from '../../../../hooks/useSectionFromPath'
 
 export const Sidebar = () => {
-	const location = useLocation()
-	const section = location.pathname.split('/')[1] || ROUTER.MAIN
+	const section = useSectionFromPath()
 
 	return (
 		<SidebarContainer>
