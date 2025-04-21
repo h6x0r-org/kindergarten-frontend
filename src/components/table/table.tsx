@@ -1,9 +1,10 @@
 import LinearProgress from '@mui/material/LinearProgress'
 import DataTable from 'react-data-table-component'
-import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+import AddIcon from '@mui/icons-material/Add'
+import IconButton from '@mui/material/IconButton'
 
-import { Container, WrapLinear } from './styles'
+import { Container, tableStyles, WrapLinear, HeaderRow } from './styles'
 import { Spinner } from '../spinner'
 import type { ITable } from './types'
 
@@ -17,45 +18,41 @@ export function Table<T>(props: ITable<T>) {
 		isFetching,
 		data,
 		title,
-		action,
 		columns,
 		...rest
 	} = props
 
 	return (
-		<Container>
-			{isFetching && (
-				<WrapLinear>
-					<LinearProgress />
-				</WrapLinear>
-			)}
-			<DataTable
-				striped
-				pointerOnHover
-				highlightOnHover
-				dense
-				persistTableHead
-				fixedHeader
-				fixedHeaderScrollHeight={SCROLL_HEIGHT}
-				columns={columns}
-				data={data}
-				responsive
-				progressPending={isLoading && !data?.length}
-				progressComponent={<Spinner />}
-				subHeader
-				subHeaderComponent={
-					<Box
-						display="flex"
-						justifyContent="space-between"
-						alignItems="center"
-						width="100%"
-					>
-						{title && <Typography variant="h6">{title}</Typography>}
-						{action}
-					</Box>
-				}
-				{...rest}
-			/>
-		</Container>
+		<>
+			<HeaderRow>
+				{title && <Typography variant="h6">{title}</Typography>}
+				<IconButton aria-label="Add">
+					<AddIcon />
+				</IconButton>
+			</HeaderRow>
+			<Container>
+				{isFetching && (
+					<WrapLinear>
+						<LinearProgress />
+					</WrapLinear>
+				)}
+				<DataTable
+					customStyles={tableStyles}
+					fixedHeaderScrollHeight={SCROLL_HEIGHT}
+					columns={columns}
+					data={data}
+					striped
+					pointerOnHover
+					highlightOnHover
+					dense
+					persistTableHead
+					fixedHeader
+					responsive
+					progressPending={isLoading && !data?.length}
+					progressComponent={<Spinner />}
+					{...rest}
+				/>
+			</Container>
+		</>
 	)
 }

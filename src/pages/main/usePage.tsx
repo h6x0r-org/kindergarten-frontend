@@ -1,5 +1,8 @@
 import type { TableColumn } from 'react-data-table-component'
 import { useQuery } from '@tanstack/react-query'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
+import IconButton from '@mui/material/IconButton'
 
 import type { IInfoList } from '../../types/info'
 import { getInfo } from '../../apis/info'
@@ -16,19 +19,41 @@ export const usePage = () => {
 
 	const columns: Array<TableColumn<IInfoList>> = [
 		{
-			name: 'title',
+			name: 'Заголовок',
 			selector: row => row.title
 		},
 		{
-			name: 'description',
+			name: 'Описание',
 			selector: row => row.description
+		},
+		{
+			cell: row => (
+				<>
+					<IconButton onClick={() => handleEdit(row)} aria-label="edit" size="small">
+						<EditIcon fontSize="small" />
+					</IconButton>
+					<IconButton onClick={() => handleDelete(row)} aria-label="delete" size="small">
+						<DeleteIcon fontSize="small" />
+					</IconButton>
+				</>
+			),
+			ignoreRowClick: true,
+			width: '100px'
 		}
 	]
+
+	const handleEdit = (item: IInfoList) => {
+		console.log('Edit:', item)
+	}
+
+	const handleDelete = (item: IInfoList) => {
+		console.log('Delete:', item)
+	}
 
 	return {
 		columns,
 		isLoading,
 		isFetching,
-		data,
+		data
 	}
 }
