@@ -8,13 +8,16 @@ import type { IInfoList } from '../../types/info'
 import { getInfo } from '../../apis/info'
 import { REACT_QUERY_KEYS } from '../../constants/react-query-keys'
 import { useSectionFromPath } from '../../hooks/useSectionFromPath'
+import { getUser } from '../../utils/user.ts'
 
 export const usePage = () => {
 	const module = useSectionFromPath()
+	const user = getUser()
 
 	const {data = [], isLoading, isFetching} = useQuery<IInfoList[]>({
 		queryKey: [REACT_QUERY_KEYS.INFO, module],
-		queryFn: async () => await getInfo(module)
+		queryFn: async () => await getInfo(module),
+		enabled: !!user
 	})
 
 	const columns: Array<TableColumn<IInfoList>> = [
