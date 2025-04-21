@@ -1,8 +1,6 @@
 import LinearProgress from '@mui/material/LinearProgress'
 import DataTable from 'react-data-table-component'
 import Typography from '@mui/material/Typography'
-import AddIcon from '@mui/icons-material/Add'
-import IconButton from '@mui/material/IconButton'
 
 import { Container, tableStyles, WrapLinear, HeaderRow } from './styles'
 import { Spinner } from '../spinner'
@@ -19,6 +17,7 @@ export function Table<T>(props: ITable<T>) {
 		data,
 		title,
 		columns,
+		AddForm,
 		...rest
 	} = props
 
@@ -26,9 +25,7 @@ export function Table<T>(props: ITable<T>) {
 		<>
 			<HeaderRow>
 				{title && <Typography variant="h6">{title}</Typography>}
-				<IconButton aria-label="Add">
-					<AddIcon />
-				</IconButton>
+				<AddForm variant="add" />
 			</HeaderRow>
 			<Container>
 				{isFetching && (

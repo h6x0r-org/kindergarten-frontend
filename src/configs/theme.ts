@@ -19,5 +19,22 @@ export const theme = createTheme({
 				}
 			}
 		},
+		MuiDialog: {
+			styleOverrides: {
+				paper: {
+					padding: baseTheme.spacing(1)
+				}
+			}
+		},
+		MuiDialogContent: {
+			styleOverrides: {
+				root: {
+					display: 'flex',
+					flexDirection: 'column',
+					gap: baseTheme.spacing(4),
+					paddingTop: `${baseTheme.spacing(1)} !important`
+				}
+			}
+		}
 	}
 })

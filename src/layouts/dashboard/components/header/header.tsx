@@ -2,7 +2,10 @@ import IconMenu from '@mui/icons-material/Menu'
 import IconClose from '@mui/icons-material/Close'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
-import Modal from '@mui/material/Modal'
+import Dialog from '@mui/material/Dialog'
+import DialogTitle from '@mui/material/DialogTitle'
+import DialogContent from '@mui/material/DialogContent'
+import DialogActions from '@mui/material/DialogActions'
 
 import { Logo } from '../../../../components/logo'
 import { HEADER_LINKS } from './constants'
@@ -16,7 +19,6 @@ import {
 	MobileHeader,
 	NavbarContent,
 	Wrapper,
-	ModalWrapper,
 	StyledLink
 } from './styles'
 
@@ -48,7 +50,7 @@ export const Header = () => {
 						))}
 					</NavbarContent>
 					{user ? (
-						<Button onClick={handleLogout} loading={isLoggingOut}>
+						<Button onClick={() => handleLogout()} loading={isLoggingOut}>
 							Выйти
 						</Button>
 					) : (
@@ -84,7 +86,7 @@ export const Header = () => {
 					</MobileNavbarContent>
 				</Box>
 				{user ? (
-					<Button onClick={handleLogout} loading={isLoggingOut}>
+					<Button onClick={() => handleLogout()} loading={isLoggingOut}>
 						Выйти
 					</Button>
 				) : (
@@ -94,13 +96,16 @@ export const Header = () => {
 				)}
 			</MobileMenu>
 
-			<Modal
-				onSubmit={form.handleSubmit(onSubmit)}
+			<Dialog
 				open={modalOpen}
 				onClose={handleClose}
 				component="form"
+				onSubmit={form.handleSubmit(onSubmit)}
+				maxWidth="xs"
+				fullWidth
 			>
-				<ModalWrapper>
+				<DialogTitle>Вход</DialogTitle>
+				<DialogContent>
 					<Input
 						label="Имя пользователя"
 						name="username"
@@ -112,15 +117,18 @@ export const Header = () => {
 						type="password"
 						control={form.control}
 					/>
+				</DialogContent>
+				<DialogActions>
 					<Button
+						fullWidth
 						loading={isPending}
 						type="submit"
 						disabled={!form.formState.isValid}
 					>
 						Войти
 					</Button>
-				</ModalWrapper>
-			</Modal>
+				</DialogActions>
+			</Dialog>
 		</>
 	)
 }

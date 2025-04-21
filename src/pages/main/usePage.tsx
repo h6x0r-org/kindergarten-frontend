@@ -1,14 +1,13 @@
 import type { TableColumn } from 'react-data-table-component'
 import { useQuery } from '@tanstack/react-query'
-import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete'
-import IconButton from '@mui/material/IconButton'
 
 import type { IInfoList } from '../../types/info'
 import { getInfo } from '../../apis/info'
 import { REACT_QUERY_KEYS } from '../../constants/react-query-keys'
 import { useSectionFromPath } from '../../hooks/useSectionFromPath'
-import { getUser } from '../../utils/user.ts'
+import { getUser } from '../../utils/user'
+import { Delete } from './components/delete'
+import { InfoForm } from './components/info-form'
 
 export const usePage = () => {
 	const module = useSectionFromPath()
@@ -16,7 +15,7 @@ export const usePage = () => {
 
 	const {data = [], isLoading, isFetching} = useQuery<IInfoList[]>({
 		queryKey: [REACT_QUERY_KEYS.INFO, module],
-		queryFn: async () => await getInfo(module),
+		queryFn: () => getInfo(module),
 		enabled: !!user
 	})
 
@@ -32,26 +31,14 @@ export const usePage = () => {
 		{
 			cell: row => (
 				<>
-					<IconButton onClick={() => handleEdit(row)} aria-label="edit" size="small">
-						<EditIcon fontSize="small" />
-					</IconButton>
-					<IconButton onClick={() => handleDelete(row)} aria-label="delete" size="small">
-						<DeleteIcon fontSize="small" />
-					</IconButton>
+					<InfoForm variant="edit" {...row} />
+					<Delete {...row} />
 				</>
 			),
 			ignoreRowClick: true,
 			width: '100px'
 		}
 	]
-
-	const handleEdit = (item: IInfoList) => {
-		console.log('Edit:', item)
-	}
-
-	const handleDelete = (item: IInfoList) => {
-		console.log('Delete:', item)
-	}
 
 	return {
 		columns,

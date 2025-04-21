@@ -4,3 +4,7 @@ export interface IControl<T extends FieldValues> extends UseControllerProps<T> {
 	name: Path<T>
 	control: Control<T>
 }
+
+export interface IForm {
+	variant: 'add' | 'edit'
+}

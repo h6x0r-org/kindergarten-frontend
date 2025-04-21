@@ -89,19 +89,3 @@ export const MobileHeader = styled('div')(({theme}) => ({
 	justifyContent: 'space-between',
 	height: theme.spacing(8)
 }))
-
-export const ModalWrapper = styled('div')(({theme}) => ({
-	position: 'absolute',
-	top: '50%',
-	left: '50%',
-	transform: 'translate(-50%, -50%)',
-	maxWidth: theme.spacing(50),
-	width: '80%',
-	backgroundColor: theme.palette.background.paper,
-	boxShadow: theme.shadows[24],
-	padding: theme.spacing(4),
-	display: 'flex',
-	flexDirection: 'column',
-	gap: theme.spacing(4),
-	borderRadius: theme.shape.borderRadius
-}))
