@@ -1,5 +1,5 @@
-import { IModule } from './module'
-import { IForm } from './components.ts'
+import type{ IModule, IModulePath } from './module'
+import type { IForm } from './components'
 
 export interface IInfo {
 	moduleName: IModule
@@ -11,10 +11,10 @@ export interface IInfoBase {
 	id: string
 	title: string
 	description: string
+	module: IModule
 }
 
 export interface IInfoList extends IInfoBase {
-	module: string
 	links?: ILink[]
 }
 
@@ -23,4 +23,4 @@ export interface ILink {
 	url: string
 }
 
-export type IInfoForm = IForm & Partial<IInfoBase>
+export type IInfoForm = IForm & Omit<Partial<IInfoBase>, 'module'> & { module: IModulePath }

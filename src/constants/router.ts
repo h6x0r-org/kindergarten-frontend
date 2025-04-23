@@ -2,13 +2,14 @@ export const ROUTER = {
 	LOGIN: '/login',
 
 	LAYOUT: '/',
+	HOME: 'info/main',
+	INFO: 'info',
 	MAIN: 'main',
 	MANAGER: 'manager',
 	ASSISTANT: 'assistant',
 	EDUCATOR: 'educator',
+	BASE: 'base',
 
-	INFO: 'info',
-
-	NOT_FOUND: '*',
-	HOME: '/main/info'
+	SECTION: ':section',
+	NOT_FOUND: '*'
 }

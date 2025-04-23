@@ -6,7 +6,6 @@ import EditIcon from '@mui/icons-material/Edit'
 import AddIcon from '@mui/icons-material/Add'
 
 import { useBoolean } from '../../../../hooks/useBoolean'
-import { useSectionFromPath } from '../../../../hooks/useSectionFromPath'
 import { type FormTypes, infoSchema } from './form.schema'
 import { createInfo, updateInfo } from '../../../../apis/info'
 import { REACT_QUERY_KEYS } from '../../../../constants/react-query-keys'
@@ -14,16 +13,14 @@ import type { IInfoForm } from '../../../../types/info'
 import { MODULE_MAP } from '../../../../types/module'
 
 export const useInfoForm = (props: IInfoForm) => {
-	const {title = '', id, description = '', variant} = props
+	const {title = '', id, description = '', variant, module} = props
 	const isEdit = variant === 'edit'
 
 	const {setFalse, setTrue, value: isOpen} = useBoolean()
-	const queryClient = useQueryClient()
-	const rawPath = useSectionFromPath()
-	const module = MODULE_MAP[rawPath]
+	const queryClient = useQueryClient()	
 
 	const defaultValues = {
-		title, description, module
+		title, description, module: MODULE_MAP[module]
 	}
 
 	const form = useForm<FormTypes>({
@@ -38,7 +35,7 @@ export const useInfoForm = (props: IInfoForm) => {
 	const {mutate, isPending} = useMutation<void, Error, FormTypes>({
 		mutationFn,
 		onSuccess: () => {
-			queryClient.invalidateQueries({queryKey: [REACT_QUERY_KEYS.INFO, rawPath]})
+			queryClient.invalidateQueries({queryKey: [REACT_QUERY_KEYS.INFO, module]})
 			setFalse()
 			form.reset()
 		}

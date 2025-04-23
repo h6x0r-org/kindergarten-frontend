@@ -18,7 +18,7 @@ export const InfoForm = (props: IInfoForm) => {
 		isPending,
 		isOpen,
 		ui: {Icon, actionText, ariaLabel, label}
-	} = useInfoForm(props)
+	} = useInfoForm(props)	
 
 	return (
 		<>

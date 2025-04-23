@@ -4,13 +4,12 @@ import { useQuery } from '@tanstack/react-query'
 import type { IInfoList } from '../../types/info'
 import { getInfo } from '../../apis/info'
 import { REACT_QUERY_KEYS } from '../../constants/react-query-keys'
-import { useSectionFromPath } from '../../hooks/useSectionFromPath'
 import { getUser } from '../../utils/user'
 import { Delete } from './components/delete'
 import { InfoForm } from './components/info-form'
+import type { IModulePath } from '../../types/module'
 
-export const usePage = () => {
-	const module = useSectionFromPath()
+export const usePage = (module: IModulePath) => {
 	const user = getUser()
 
 	const {data = [], isLoading, isFetching} = useQuery<IInfoList[]>({
@@ -31,7 +30,7 @@ export const usePage = () => {
 		{
 			cell: row => (
 				<>
-					<InfoForm variant="edit" {...row} />
+					<InfoForm {...row} variant="edit" module={module}  />
 					<Delete {...row} />
 				</>
 			),
