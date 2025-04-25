@@ -4,6 +4,7 @@ export const ROUTER = {
 	LAYOUT: '/',
 	HOME: 'info/main',
 	INFO: 'info',
+	CANDIDATES: 'candidates',
 	MAIN: 'main',
 	MANAGER: 'manager',
 	ASSISTANT: 'assistant',

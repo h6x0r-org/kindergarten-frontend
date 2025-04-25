@@ -10,7 +10,7 @@ export const Sidebar = () => {
 	return (
 		<SidebarContainer>
 			{SIDEBAR_LINKS.map(({Icon, title, path}) => {
-				const fullPath = `/${section}/${path}`
+				const fullPath = `${path}/${section}`
 
 				return (
 					<Tooltip key={path} title={title} placement="right">

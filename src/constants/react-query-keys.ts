@@ -1,3 +1,4 @@
 export const REACT_QUERY_KEYS = {
-	INFO: 'info'
+	INFO: 'info',
+	CANDIDATES: 'candidates'
 }

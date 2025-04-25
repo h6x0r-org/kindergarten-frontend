@@ -8,3 +8,8 @@ export interface IControl<T extends FieldValues> extends UseControllerProps<T> {
 export interface IForm {
 	variant: 'add' | 'edit'
 }
+
+export interface IOption {
+	value: string
+	label: string
+}

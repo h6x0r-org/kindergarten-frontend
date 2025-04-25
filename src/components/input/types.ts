@@ -1,5 +1,5 @@
 import type { FieldValues } from 'react-hook-form'
-import type { TextFieldProps } from '@mui/material'
+import type { TextFieldProps } from '@mui/material/TextField'
 
 import type { IControl } from '../../types/components'
 

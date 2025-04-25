@@ -3,7 +3,7 @@ import { Table } from '../../components/table'
 import { InfoForm } from './components/info-form'
 import { useSectionFromPath } from '../../hooks/useSectionFromPath'
 
-const Info = () => {
+const Page = () => {
 	const section = useSectionFromPath()	
 	const page = usePage(section)
 
@@ -16,4 +16,4 @@ const Info = () => {
 	)
 }
 
-export default Info
+export default Page
