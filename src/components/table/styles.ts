@@ -4,11 +4,11 @@ import { theme } from '../../configs/theme'
 import Stack from '@mui/material/Stack'
 
 export const HeaderRow = styled(Stack)(({ theme }) => ({
-	padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
+	padding: theme.spacing(2),
 	display: 'flex',
-	flexDirection: 'row',
 	alignItems: 'center',
-	justifyContent: 'space-between',
+	flexDirection: 'row',
+	gap: theme.spacing(2),
 }))
 
 export const Container = styled('div')({

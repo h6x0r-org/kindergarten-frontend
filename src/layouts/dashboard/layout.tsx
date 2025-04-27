@@ -6,6 +6,7 @@ import { Header } from './components/header'
 import { Sidebar } from './components/sidebar'
 import { Container } from './styles'
 import { Suspense } from '../../components/suspense'
+import { Footer } from './components/footer'
 
 const Layout = () => (
 	<Container>
@@ -18,21 +19,7 @@ const Layout = () => (
 				</Suspense>
 			</Stack>
 		</Box>
-		{/* TODO: Footer */}
-		<Box
-			component="footer"
-			sx={{
-				flexShrink: 0,
-				height: 32,
-				display: 'flex',
-				justifyContent: 'center',
-				alignItems: 'center',
-				padding: 1,
-				borderTop: (theme) => `1px solid ${theme.palette.divider}`
-			}}
-		>
-			Footer
-		</Box>
+		<Footer />
 	</Container>
 )
 

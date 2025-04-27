@@ -5,23 +5,24 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 
 import { Input } from '../../../../components/input'
-import type { IInfoForm } from '../../../../types/info'
-import { useInfoForm } from './useInfoForm'
+import { useCandidateForm } from './useCandidateForm'
 import { SideDialog } from './styles'
-import { OPTIONS_MODULE } from '../../../../types/module'
 import { Select } from '../../../../components/select'
+import { OPTIONS_CANDIDATE_STATUS, OPTIONS_CANDIDATE_TYPE } from '../../../../types/type'
+import { OPTIONS_MODULE } from '../../../../types/module'
+import type { ICandidateForm } from '../../../../types/candidates'
 
-export const InfoForm = (props: IInfoForm) => {
+export const CandidateForm = (props: ICandidateForm) => {
 	const {
 		setTrue,
 		setFalse,
 		form,
 		onSubmit,
 		isPending,
-		disabled,
 		isOpen,
+		disabled,
 		ui: {Icon, actionText, ariaLabel, label}
-	} = useInfoForm(props)
+	} = useCandidateForm(props)
 
 	return (
 		<>
@@ -40,13 +41,26 @@ export const InfoForm = (props: IInfoForm) => {
 				<DialogTitle>{label}</DialogTitle>
 				<DialogContent>
 					<Select
+						name="type"
+						label="Тип"
+						control={form.control}
+						options={OPTIONS_CANDIDATE_TYPE}
+					/>
+					<Select
 						name="module"
 						label="Модуль"
 						control={form.control}
 						options={OPTIONS_MODULE}
 					/>
-					<Input name="title" label="Заголовок" control={form.control} />
-					<Input name="description" label="Описание" control={form.control} />
+					<Select
+						name="candidateStatus"
+						label="Статус кандидата"
+						control={form.control}
+						options={OPTIONS_CANDIDATE_STATUS}
+					/>
+					<Input name="fullName" label="ФИО" control={form.control} />
+					<Input name="age" label="Возраст" type="number" control={form.control} />
+					<Input name="contacts" label="Контакты" control={form.control} />
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={setFalse} variant="outlined">Отмена</Button>

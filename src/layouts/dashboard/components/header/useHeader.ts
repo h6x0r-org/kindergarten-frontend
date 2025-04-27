@@ -12,10 +12,6 @@ import { useBoolean } from '../../../../hooks/useBoolean'
 export const useHeader = () => {
 	const user = getUser()
 	const {
-		value: mobileMenuOpen,
-		toggle: toggleMobileMenu
-	} = useBoolean()
-	const {
 		value: modalOpen,
 		setTrue: handleOpen,
 		setFalse: handleClose
@@ -52,10 +48,8 @@ export const useHeader = () => {
 		onSubmit,
 		form,
 		modalOpen,
-		mobileMenuOpen,
 		handleOpen,
 		handleClose,
-		toggleMobileMenu,
 		handleLogout: logoutMutate
 	}
 }

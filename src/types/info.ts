@@ -1,11 +1,5 @@
-import type{ IModule, IModulePath } from './module'
+import type{ IModule } from './module'
 import type { IForm } from './components'
-
-export interface IInfo {
-	moduleName: IModule
-	tableLink: string
-	infoList: IInfoList[]
-}
 
 export interface IInfoBase {
 	id: string
@@ -23,4 +17,4 @@ export interface ILink {
 	url: string
 }
 
-export type IInfoForm = IForm & Omit<Partial<IInfoBase>, 'module'> & { module: IModulePath }
+export type IInfoForm = IForm & Partial<IInfoBase>

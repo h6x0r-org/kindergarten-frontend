@@ -33,9 +33,6 @@ export const Select = <T extends FieldValues>({
 				value={value ?? ''}
 				label={label}
 				onChange={onChange}
-				sx={(theme) => ({
-					width: theme.spacing(25)
-				})}
 			>
 				{options.map(({value: optionValue, label: optionLabel}) => (
 					<MenuItem key={optionValue} value={optionValue}>

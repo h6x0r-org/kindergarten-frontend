@@ -24,7 +24,7 @@ export function Table<T>(props: ITable<T>) {
 	return (
 		<>
 			<HeaderRow>
-				{title && <Typography variant="h6">{title}</Typography>}
+				<Typography variant="h6">{title}</Typography>
 				<AddForm variant="add" />
 			</HeaderRow>
 			<Container>

@@ -13,7 +13,7 @@ import { useBoolean } from '../../../../hooks/useBoolean'
 import type { ICandidatesList } from '../../../../types/candidates'
 import { deleteCandidate } from '../../../../apis/candidates'
 import { useSearchParamState } from '../../../../hooks/useSearchParam'
-import type { IType } from '../../../../types/types'
+import type { IType } from '../../../../types/type'
 
 export const Delete = ({fullName, id}: ICandidatesList) => {
 	const {setTrue, setFalse, value} = useBoolean()
@@ -45,7 +45,7 @@ export const Delete = ({fullName, id}: ICandidatesList) => {
 					<Button onClick={setFalse} variant="outlined">
 						Отмена
 					</Button>
-					<Button color="error" disabled={isPending} onClick={() => mutate()}>
+					<Button color="error" loading={isPending} onClick={() => mutate()}>
 						Удалить
 					</Button>
 				</DialogActions>

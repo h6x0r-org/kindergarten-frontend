@@ -17,12 +17,11 @@ export const router = createBrowserRouter([
 				element: <Navigate to={ROUTER.HOME} replace />
 			},
 			{
-				path: `${ROUTER.INFO}/${ROUTER.SECTION}`,
+				path: ROUTER.INFO,
 				element: <Info />
 			},
 			{
-				// TODO: Fix add filter to previis and fix route section
-				path: `${ROUTER.CANDIDATES}/${ROUTER.SECTION}`,
+				path: ROUTER.CANDIDATES,
 				element: <Candidates />
 			}
 		]

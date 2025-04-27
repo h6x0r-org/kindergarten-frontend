@@ -1,1 +1,0 @@
-export type IType = 'business_assistant' | 'manager' | 'educator' | 'nanny'

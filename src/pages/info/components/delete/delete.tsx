@@ -10,13 +10,14 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import type { IInfoList } from '../../../../types/info'
 import { deleteInfo } from '../../../../apis/info'
-import { useSectionFromPath } from '../../../../hooks/useSectionFromPath'
 import { REACT_QUERY_KEYS } from '../../../../constants/react-query-keys'
 import { useBoolean } from '../../../../hooks/useBoolean'
+import { useSearchParamState } from '../../../../hooks/useSearchParam'
+import type { IModulePath } from '../../../../types/module'
 
 export const Delete = ({title, id}: IInfoList) => {
 	const {setTrue, setFalse, value} = useBoolean()
-	const module = useSectionFromPath()
+	const [module] = useSearchParamState<IModulePath>('module', 'main')
 	const queryClient = useQueryClient()
 
 	const {mutate, isPending} = useMutation({
@@ -44,7 +45,7 @@ export const Delete = ({title, id}: IInfoList) => {
 					<Button onClick={setFalse} variant="outlined">
 						Отмена
 					</Button>
-					<Button color="error" disabled={isPending} onClick={() => mutate()}>
+					<Button color="error" loading={isPending} onClick={() => mutate()}>
 						Удалить
 					</Button>
 				</DialogActions>

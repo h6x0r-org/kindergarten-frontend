@@ -7,10 +7,12 @@ import { REACT_QUERY_KEYS } from '../../constants/react-query-keys'
 import { getUser } from '../../utils/user'
 import { Delete } from './components/delete'
 import { InfoForm } from './components/info-form'
+import { useSearchParamState } from '../../hooks/useSearchParam'
 import type { IModulePath } from '../../types/module'
 
-export const usePage = (module: IModulePath) => {
+export const usePage = () => {
 	const user = getUser()
+	const [module, setModule] = useSearchParamState<IModulePath>('module', 'main')
 
 	const {data = [], isLoading, isFetching} = useQuery<IInfoList[]>({
 		queryKey: [REACT_QUERY_KEYS.INFO, module],
@@ -30,7 +32,7 @@ export const usePage = (module: IModulePath) => {
 		{
 			cell: row => (
 				<>
-					<InfoForm {...row} variant="edit" module={module}  />
+					<InfoForm {...row} variant="edit" />
 					<Delete {...row} />
 				</>
 			),
@@ -40,6 +42,8 @@ export const usePage = (module: IModulePath) => {
 	]
 
 	return {
+		setModule,
+		module,
 		columns,
 		isLoading,
 		isFetching,

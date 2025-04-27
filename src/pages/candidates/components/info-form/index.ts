@@ -1,1 +1,0 @@
-export { InfoForm } from './info-form'

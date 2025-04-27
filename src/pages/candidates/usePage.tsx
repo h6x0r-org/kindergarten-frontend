@@ -6,9 +6,9 @@ import { getUser } from '../../utils/user'
 import type { ICandidatesList } from '../../types/candidates'
 import { getCandidates } from '../../apis/candidates'
 import { Delete } from './components/delete'
-import { useSearchParamState } from '../../hooks/useSearchParam.ts'
-import type { IType } from '../../types/types'
-// import { InfoForm } from './components/info-form'
+import { useSearchParamState } from '../../hooks/useSearchParam'
+import type { IType } from '../../types/type'
+import { CandidateForm } from './components/candidate-form'
 
 export const usePage = () => {
 	const user = getUser()
@@ -29,7 +29,7 @@ export const usePage = () => {
 		{
 			cell: row => (
 				<>
-					{/* <InfoForm {...row} variant="edit" module={module}  /> */}
+					<CandidateForm {...row} variant="edit" />
 					<Delete {...row} />
 				</>
 			),

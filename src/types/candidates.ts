@@ -1,15 +1,19 @@
+import type { IForm } from './components'
+import type { ICandidateStatus, ICandidateType } from './type'
+import type { IModule } from './module'
+
 export interface ICandidatesList {
 	id: string
-	type: string
+	type: ICandidateType
 	fullName: string
 	candidateEntryDate: string
 	age: number
 	contacts: string
-	candidateStatus: string
+	candidateStatus: ICandidateStatus
 	interviewComments: string | null
 	createdAt: string
 	updatedAt: string
-	module: string
+	module: IModule
 	resumeLink: string
 	previousCompanyName: string
 	previousPositionName: string
@@ -76,3 +80,5 @@ export interface ICandidatesList {
 	previousCompanyMetrics: string | null
 	position: string | null
 }
+
+export type ICandidateForm = IForm & Partial<ICandidatesList>
